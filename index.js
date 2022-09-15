@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://plutospace-erp.netlify.app",
+    origin: "https://erp-plutospace.netlify.app",
     methods: ["GET", "POST"],
   },
 });
