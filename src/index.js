@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 
 const app = express();
 const http = require("http");
@@ -10,6 +11,16 @@ const { Server } = require("socket.io");
 app.use(cors());
 
 const server = http.createServer(app);
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.json({
+    message: "Hosting Maseru backend successful!!",
+  });
+});
+
+app.use(`/.netlify/functions/index`, router);
 
 const io = new Server(server, {
   cors: {
@@ -44,3 +55,6 @@ server.listen(PORT, () => {
   console.log("SERVER RUNNING");
   // console.log("something");
 });
+
+module.exports = app;
+module.exports.handler = serverless(app);

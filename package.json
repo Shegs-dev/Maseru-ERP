@@ -2,10 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "NODE_ENV=development netlify-lambda serve src",
+    "build": "NODE_ENV=production netlify-lambda build src"
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +16,10 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.0",
     "needle": "^3.1.0",
+    "netlify-lambda": "^2.0.15",
     "node-fetch": "^2.6.7",
     "nodemon": "^2.0.15",
+    "serverless-http": "^3.1.0",
     "socket.io": "^4.5.0"
   }
 }
